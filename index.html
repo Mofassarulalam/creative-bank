@@ -82,6 +82,10 @@
     depositBtn.addEventListener('click', function(){
         const depositAmount = document.getElementById('deposit-amount').value;
         const depositNum = parseFloat(depositAmount);
+                            //  or
+        // const depositNum = getInputNumber('deposit-amount');
+
+
 
         // const currentDeposit = document.getElementById('currentDeposit').innerText;
         // const currentDepositNum = parseFloat(currentDeposit);
@@ -102,12 +106,7 @@
 
     })
 
-    function updateSpanTax(id, depositNum){
-        const current = document.getElementById(id).innerText;
-        const currentNum = parseFloat(current);
-        const totalAmount = depositNum + currentNum;
-        document.getElementById(id).innerText = totalAmount;
-    }
+
 
     // withdraw btn event handler
 
@@ -124,21 +123,33 @@
         document.getElementById('currentWithdraw').innerText = totalWithdraw;
 
 
-        // const currentBalance = document.getElementById('currentBalance').innerText;
-        // const currentBalanceNum = parseFloat(currentBalance);
-        // const totalBalance = depositNum + currentBalanceNum;
-        // document.getElementById('currentBalance').innerText = totalBalance;
+        // const currentBalanceAfterWithdraw =  document.getElementById('currentBalance').innerText;
+        // const currentBalanceNumAfterWithdraw = parseFloat(currentBalanceAfterWithdraw);
+        // const totalBalanceAfterWithdraw  = currentBalanceNumAfterWithdraw - totalWithdraw;
+        // document.getElementById('currentBalance').innerText =totalBalanceAfterWithdraw;
 
-        const currentBalanceAfterWithdraw =  document.getElementById('currentBalance').innerText;
-        const currentBalanceNumAfterWithdraw = parseFloat(currentBalanceAfterWithdraw);
-        const totalBalanceAfterWithdraw  = currentBalanceNumAfterWithdraw - totalWithdraw;
-        document.getElementById('currentBalance').innerText =totalBalanceAfterWithdraw;
+                                         // OR
+        updateSpanTax('currentBalance', -1 * totalWithdraw);
 
 
         document.getElementById('withdraw-amount').value = "";
 
 
     })
+
+
+    function updateSpanTax(id, depositNum){
+        const current = document.getElementById(id).innerText;
+        const currentNum = parseFloat(current);
+        const totalAmount = depositNum + currentNum;
+        document.getElementById(id).innerText = totalAmount;
+    }
+ 
+    // function getInputNumber (id){
+    //     const depositAmount = document.getElementById(id).value;
+    //     const depositNum = parseFloat(depositAmount);
+    //     return depositNum;
+    // }
 
 </script>
 </body>
